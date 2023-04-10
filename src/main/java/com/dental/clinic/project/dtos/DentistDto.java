@@ -1,15 +1,9 @@
-package com.dental.clinic.project.entities;
+package com.dental.clinic.project.dtos;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.dental.clinic.project.entities.Dentist;
 
-@Entity
-public class Dentist {
+public class DentistDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
 
@@ -17,15 +11,23 @@ public class Dentist {
     private Integer cro;
     private boolean meetsCovenant;
 
-    public Dentist() {
+    public DentistDto() {
     }
 
-    public Dentist(Integer id, String name, String email, Integer cro, boolean meetsCovenant) {
+    public DentistDto(Integer id, String name, String email, Integer cro, boolean meetsCovenant) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.cro = cro;
         this.meetsCovenant = meetsCovenant;
+    }
+
+    public DentistDto(Dentist dentist) {
+        this.id = dentist.getId();
+        this.name = dentist.getName();
+        this.email = dentist.getEmail();
+        this.cro = dentist.getCro();
+        this.meetsCovenant = dentist.isMeetsCovenant();
     }
 
     public Integer getId() {
